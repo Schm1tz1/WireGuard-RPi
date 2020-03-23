@@ -1,7 +1,7 @@
 [Interface]
-Address = <SRV_IP_RANGE> # 10.10.10.1/24
+Address = $SRV_IP_RANGE # 10.10.10.1/24
 ListenPort = 51820
-PrivateKey = <SRV_PRIVKEY>
+PrivateKey = $SRV_PRIVKEY
 
 # enable IP forwarding just in case this config is not set by default
 PostUp = sysctl -w net.ipv4.ip_forward=1
