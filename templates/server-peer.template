@@ -1,0 +1,4 @@
+# This block is needed for each client
+[Peer]
+PublicKey = <CLIENT_PUBKEY>
+AllowedIPs = <CLIENT_IP_RANGE> # e.g. 10.10.10.2/32
