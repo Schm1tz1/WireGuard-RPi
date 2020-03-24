@@ -26,6 +26,6 @@ Further steps (optional):
   - To activate WireGuard on your server on startup, a service can be installes with systemctl selecting ***Install WireGuard Service***.
   - If you want to share your client's configuration e.g. for an Andoid App you can use ***Generate QR code from client config***.
  
- ##Further Information
+ ## Further Information
  - https://www.wireguard.com/install/
  - https://www.wireguard.com/quickstart/
