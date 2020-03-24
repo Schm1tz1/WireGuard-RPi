@@ -162,7 +162,7 @@ function generate_config_client() {
   echo " -> $DNS_SERVER"
   echo
 
-  CLIENT_ALLOWED_IP=$(readVarWithDefault "Allowed Client IPs (i.e. IP ranges that are adressed via VPN - use 0.0.0.0/0 for all traffic)" "10.10.10.0/24, 192.168.0.1/24")
+  CLIENT_ALLOWED_IP=$(readVarWithDefault "Allowed Client IPs (i.e. IP ranges that are adressed via VPN - use 0.0.0.0/0 for all traffic)" "10.10.10.0/24, 192.168.0.0/24")
   echo " -> $CLIENT_ALLOWED_IP"
   echo
 0.0.0.0/0 # and/or local netmask, e.g. 192.168.178.0/24
