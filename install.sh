@@ -119,7 +119,7 @@ function add_peer_server() {
   echo " -> $CLIENT_NAME"
   echo
 
-  CLIENT_IP=$(readVarWithDefault "Client IP range (e.g. single client 10.10.10.2/32, vpn/remote network 10.10.10.0/24, route all traffic 0.0.0.0/0...) " "10.10.10.2/32")
+  CLIENT_IP=$(readVarWithDefault "Client IP range" "10.10.10.2/32")
   echo " -> $CLIENT_IP"
   echo
 
@@ -162,6 +162,11 @@ function generate_config_client() {
   echo " -> $DNS_SERVER"
   echo
 
+  CLIENT_ALLOWED_IP=$(readVarWithDefault "Allowed Client IPs (i.e. IP ranges that are adressed via VPN - use 0.0.0.0/0 for all traffic)" "10.10.10.0/24, 192.168.0.1/24")
+  echo " -> $CLIENT_ALLOWED_IP"
+  echo
+0.0.0.0/0 # and/or local netmask, e.g. 192.168.178.0/24
+
   echo "[Interface]
 PrivateKey = $CLIENT_PRIVKEY
 Address = $CLIENT_IP
@@ -170,7 +175,7 @@ DNS = $DNS_SERVER
 [Peer]
 PublicKey = $SRV_PUBKEY
 Endpoint = $SRV_URL:$SRV_PORT
-AllowedIPs = 0.0.0.0/0 # and/or local netmask, e.g. 192.168.178.0/24
+AllowedIPs = $CLIENT_ALLOWED_IP
 PersistentKeepalive = 25
 " >$CLIENT_NAME.conf
 
