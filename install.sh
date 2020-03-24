@@ -114,14 +114,20 @@ PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACC
 }
 
 function add_peer_server() {
-  CLIENT_IP=$(readVarWithDefault "Client IP (and Mask)" "10.10.10.2/32")
+
+  CLIENT_NAME="client-$(readVarWithDefault "Enter client name" "smartphone")"
+  echo " -> $CLIENT_NAME"
+  echo
+
+  CLIENT_IP=$(readVarWithDefault "Client IP range (e.g. single client 10.10.10.2/32, vpn/remote network 10.10.10.0/24, route all traffic 0.0.0.0/0...) " "10.10.10.2/32")
   echo " -> $CLIENT_IP"
   echo
 
   CLIENT_PUBKEY=$(select_and_read_file "/etc/wireguard/*.key" "Select client public key")
   echo " -> $CLIENT_PUBKEY"
   echo
-  echo "[Peer]
+  echo "# $CLIENT_NAME
+[Peer]
 PublicKey = $CLIENT_PUBKEY
 AllowedIPs = $CLIENT_IP
 " >>wg0.conf && echo "New peer $CLIENT_IP added to config for wg0!"
