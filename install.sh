@@ -126,7 +126,7 @@ function add_peer_server() {
   CLIENT_PUBKEY=$(select_and_read_file "/etc/wireguard/*.key" "Select client public key")
   echo " -> $CLIENT_PUBKEY"
   echo
-  echo "# $CLIENT_NAME
+  echo "# Client $CLIENT_NAME
 [Peer]
 PublicKey = $CLIENT_PUBKEY
 AllowedIPs = $CLIENT_IP
