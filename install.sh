@@ -2,6 +2,25 @@
 
 ROOTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/." && pwd)"
 
+function getting_started() {
+  echo "*******************
+* Getting started *
+*******************
+
+To install WireGuard with this tool you basically need to perform 4 steps:
+  1. Generate keypairs for the server and each client (Menu: 'Generate new keypair')
+  2. Generate a server config and add the server private key (Menu: 'Create new server config')
+  3. Generate a config for each client and add the server public and the client private key (Menu: 'Create new client config')
+  4. Add the clients (peers) to the server config and add their public client keys (Menu: 'Add peer to server config')
+
+
+Further steps (optional):
+  - To activate WireGuard on your server on startup, a service can be installes with systemctl selecting 'Install WireGuard Service'.
+  - If you want to share your client's configuration e.g. for an Andoid App you can use 'Generate QR code from client config'
+
+"
+}
+
 function check_root() {
   if [ "$(id -u)" != "0" ]; then
     echo "This script must be run as root !" 1>&2
@@ -166,9 +185,12 @@ function show_menu() {
   echo "                                                                             "
 
   PS3='Please enter your choice: '
-  options=("List all configs and keys" "Display specific config" "Generate new keypair" "Create new server config" "Add peer to server config" "Create new client config" "Generate QR code from client config" "Install WireGuard Service" "Quit")
+  options=("Getting started" "List all configs and keys" "Display specific config" "Generate new keypair" "Create new server config" "Add peer to server config" "Create new client config" "Generate QR code from client config" "Install WireGuard Service" "Quit")
   select opt in "${options[@]}"; do
     case $opt in
+    "Getting started")
+      getting_started
+      ;;
     "List all configs and keys")
       echo "*** Configs ***"
       ls -l /etc/wireguard/*.conf
