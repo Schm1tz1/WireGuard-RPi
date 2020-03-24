@@ -3,8 +3,11 @@ This project includes a script to install and configure your WireGuard setup on 
 ## Getting started
 **Method 1 (direct)**
 ```Shell
-curl -L https://raw.githubusercontent.com/Schm1tz1/WireGuard-RPi/master/install.sh | bash
+wget https://raw.githubusercontent.com/Schm1tz1/WireGuard-RPi/master/install.sh
+sudo bash ./install.sh
 ```
+Note: ```curl -L https://raw.githubusercontent.com/Schm1tz1/WireGuard-RPi/master/install.sh | bash``` is planned, but currently not working.
+
 **Method 2 (includes cloning git repo)**
 ```Shell
 git clone https://github.com/Schm1tz1/WireGuard-RPi.git
@@ -23,3 +26,6 @@ Further steps (optional):
   - To activate WireGuard on your server on startup, a service can be installes with systemctl selecting ***Install WireGuard Service***.
   - If you want to share your client's configuration e.g. for an Andoid App you can use ***Generate QR code from client config***.
  
+ ##Further Information
+ - https://www.wireguard.com/install/
+ - https://www.wireguard.com/quickstart/
