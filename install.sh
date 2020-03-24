@@ -35,7 +35,7 @@ function prepare_config_dir() {
   fi
 
   cd /etc/wireguard
-  umask 077
+  umask 0077
 }
 
 function prepare_system() {
