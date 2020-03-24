@@ -15,7 +15,7 @@ sudo bash WireGuard-RPi/install.sh
 ```
 The following steps are straightforward - please also have a look a the first menu point "Getting started".
 
-##Usage of WireGuard-RPi
+## Usage of WireGuard-RPi
 To install WireGuard with this tool you basically need to perform 4 steps:
   1. Generate keypairs for the server and each client (Menu: ***Generate new keypair***)
   2. Generate a server config and add the server private key (Menu: ***Create new server config***)
