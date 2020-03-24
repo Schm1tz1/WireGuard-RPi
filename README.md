@@ -29,3 +29,4 @@ Further steps (optional):
  ## Further Information
  - https://www.wireguard.com/install/
  - https://www.wireguard.com/quickstart/
+ - https://emanuelduss.ch/2018/09/wireguard-vpn-road-warrior-setup/
