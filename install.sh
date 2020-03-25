@@ -185,6 +185,21 @@ function generateNewKeypair() {
   wg genkey | tee $KEY_NAME-private.key | wg pubkey >$KEY_NAME-public.key
 }
 
+function create_backup() {
+  TODAY=$(date +%Y%m%d)
+  tar cj /etc/wireguard/* | openssl enc -aes-256-cbc -e >/tmp/wireguard_backup_$TODAY.tar.bz2.enc
+  ln -is /tmp/wireguard_backup_$TODAY.tar.bz2.enc /tmp/wireguard_backup_LATEST.tar.bz2.enc
+
+  echo "Created backup in /tmp/wireguard_backup_$TODAY.tar.bz2.enc"
+}
+
+function restore_backup() {
+  BACKUP_FILE=$(readVarWithDefault "Backup file with full path" "/tmp/wireguard_backup_20200325.tar.bz2.enc")
+  echo "Restoring backup from '$BACKUP_FILE' ..."
+  openssl enc -aes-256-cbc -d -in $BACKUP_FILE | tar xjv --directory /
+
+}
+
 function show_menu() {
   echo " __          ___           _____                     _        _____  _____ _ "
   echo " \ \        / (_)         / ____|                   | |      |  __ \|  __ (_)"
@@ -195,7 +210,7 @@ function show_menu() {
   echo "                                                                             "
 
   PS3='Please enter your choice: '
-  options=("Getting started" "List all configs and keys" "Display specific config" "Generate new keypair" "Create new server config" "Add peer to server config" "Create new client config" "Generate QR code from client config" "Install WireGuard Service" "Quit")
+  options=("Getting started" "List all configs and keys" "Display specific config" "Generate new keypair" "Create new server config" "Add peer to server config" "Create new client config" "Generate QR code from client config" "Install WireGuard Service" "Backup /etc/wireguard" "Restore backup" "Quit")
   select opt in "${options[@]}"; do
     case $opt in
     "Getting started")
@@ -228,6 +243,12 @@ function show_menu() {
       ;;
     "Install WireGuard Service")
       install_service
+      ;;
+    "Backup /etc/wireguard")
+      create_backup
+      ;;
+    "Restore backup")
+      restore_backup
       ;;
     "Quit")
       echo "*************************************"
