@@ -201,13 +201,13 @@ function restore_backup() {
 }
 
 function show_menu() {
-  echo " __          ___           _____                     _        _____  _____ _ "
-  echo " \ \        / (_)         / ____|                   | |      |  __ \|  __ (_)"
-  echo "  \ \  /\  / / _ _ __ ___| |  __ _   _  __ _ _ __ __| |______| |__) | |__) | "
-  echo "   \ \/  \/ / | | '__/ _ \ | |_ | | | |/ _\` | '__/ _\` |______|  _  /|  ___/ |"
-  echo "    \  /\  /  | | | |  __/ |__| | |_| | (_| | | | (_| |      | | \ \| |   | |"
-  echo "     \/  \/   |_|_|  \___|\_____|\__,_|\__,_|_|  \__,_|      |_|  \_\_|   |_|"
-  echo "                                                                             "
+  echo -e "\e[32m __          ___           _____                     _        _____  _____ _ "
+  echo -e "\e[32m \ \        / (_)         / ____|                   | |      |  __ \|  __ (_)"
+  echo -e "\e[32m  \ \  /\  / / _ _ __ ___| |  __ _   _  __ _ _ __ __| |______| |__) | |__) | "
+  echo -e "\e[32m   \ \/  \/ / | | '__/ _ \ | |_ | | | |/ _\` | '__/ _\` |______|  _  /|  ___/ |"
+  echo -e "\e[32m    \  /\  /  | | | |  __/ |__| | |_| | (_| | | | (_| |      | | \ \| |   | |"
+  echo -e "\e[32m     \/  \/   |_|_|  \___|\_____|\__,_|\__,_|_|  \__,_|      |_|  \_\_|   |_|\e[0m"
+  echo -e "                                                                             "
 
   PS3='Please enter your choice: '
   options=("Getting started" "List all configs and keys" "Display specific config" "Generate new keypair" "Create new server config" "Add peer to server config" "Create new client config" "Generate QR code from client config" "Install WireGuard Service" "Backup /etc/wireguard" "Restore backup" "Quit")
