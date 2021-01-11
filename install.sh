@@ -50,7 +50,8 @@ function prepare_system() {
   #apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC
   #apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
 
-  printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' | tee --append /etc/apt/preferences.d/limit-unstable
+  # old priority: 150, changing to 90 to be on the safe side
+  printf 'Package: *\nPin: release a=unstable\nPin-Priority: 90\n' | tee --append /etc/apt/preferences.d/limit-unstable
 }
 
 function install_packages() {
